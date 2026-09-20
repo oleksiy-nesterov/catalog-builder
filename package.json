@@ -1,8 +1,26 @@
 {
   "name": "catalog-builder",
   "version": "0.1.0",
+  "description": "HTML and CSS catalog builder for static web output, lightweight PDFs and print-oriented PDFs.",
   "private": true,
+  "license": "UNLICENSED",
   "type": "module",
+  "packageManager": "npm@11.12.1",
+  "keywords": [
+    "catalog",
+    "pdf",
+    "print",
+    "html",
+    "css",
+    "vivliostyle",
+    "nunjucks",
+    "typescript"
+  ],
+  "os": [
+    "darwin",
+    "win32",
+    "linux"
+  ],
   "scripts": {
     "postinstall": "node install-print-tools.mjs",
     "setup:print": "node install-print-tools.mjs",

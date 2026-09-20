@@ -1,6 +1,6 @@
 # Catalog Builder
 
-Catalog Builder uses HTML and CSS as the source format for PDF publications. The core idea is simple: HTML + CSS -> static HTML output, lightweight PDF and print-oriented PDF through Vivliostyle. It can be used for product catalogs, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
+Catalog Builder uses HTML and CSS as the source format for PDF publications. The core idea is simple: HTML + CSS -> static HTML output, lightweight PDF and print-oriented PDF through [Vivliostyle](https://vivliostyle.org/). It can be used for product catalogs, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
 
 ## Structure
 
@@ -91,7 +91,7 @@ catalogs/default/pages/product-page/
 The page index, page number and left/right side are computed from `catalog.json`; they are not stored in page files.
 Templates can also read `page.target`, which is `web`, `pdf` or `print` for the current render.
 
-Page templates are normal Nunjucks files. Use `template()` to render a reusable template by folder name:
+Page templates are normal [Nunjucks](https://mozilla.github.io/nunjucks/) files. Use `template()` to render a reusable template by folder name:
 
 ```njk
 {% set data = file('data.json') %}

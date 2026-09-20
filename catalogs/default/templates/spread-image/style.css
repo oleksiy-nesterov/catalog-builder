@@ -1,0 +1,13 @@
+:scope > div {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+}
+
+.page-left :scope > div {
+  background-position: left center;
+}
+
+.page-right :scope > div {
+  background-position: right center;
+}

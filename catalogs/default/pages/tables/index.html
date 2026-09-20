@@ -1,0 +1,57 @@
+<section class="hero">
+  <h1><div>Tables</div> system</h1>
+  <p>
+    Simple table examples for catalog content. The base table style lives in typography.css
+    and uses a clean 1px black grid.
+  </p>
+</section>
+
+<div class="table-grid">
+  <section>
+    <h3>Markdown table</h3>
+    {{ template('table', {
+      data: file.md('table.md')
+    }) }}
+  </section>
+
+  <section>
+    <h3>CSV table</h3>
+    <p>Rendered from <code>table.csv</code>.</p>
+    {{ template('table', {
+      data: file.csv('table.csv')
+    }) }}
+  </section>
+</div>
+
+<section>
+  <h3>HTML table</h3>
+  <p>Hand-authored HTML markup using the same global table style.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Role</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Header</td>
+        <td>Introduces the product section</td>
+        <td>Required</td>
+      </tr>
+      <tr>
+        <td>Specification row</td>
+        <td>Compares product attributes</td>
+        <td>Optional</td>
+      </tr>
+      <tr>
+        <td>Footer note</td>
+        <td>Clarifies data source or units</td>
+        <td>Optional</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+{{ template('page-number', { offset: -1 }) }}

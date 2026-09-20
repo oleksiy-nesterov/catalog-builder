@@ -1,0 +1,17 @@
+:root {
+  --white: rgb(255 255 255);
+  --black: rgb(0 0 0);
+  --blue: rgb(0 87 183);
+  --yellow: rgb(255 221 0);
+  --font-family: Manrope, Arial, sans-serif;
+  --text-color: var(--black);
+}
+
+@media print {
+  :root {
+    --white: device-cmyk(0% 0% 0% 0%);
+    --black: device-cmyk(0% 0% 0% 100%);
+    --blue: device-cmyk(100% 63% 0% 2%);
+    --yellow: device-cmyk(0% 1% 100% 0%);
+  }
+}

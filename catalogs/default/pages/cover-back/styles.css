@@ -1,0 +1,21 @@
+:scope {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  border: 0;
+}
+
+:scope .logo {
+  width: 1em;
+  display: inline-block;
+}
+
+:scope .footer {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--yellow);
+  gap: 0.5em;
+  margin-bottom: 10em;
+}

@@ -1,0 +1,89 @@
+:scope {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+:scope .hero {
+  h1 {
+    div {
+      color: var(--blue);
+    }
+  }
+}
+
+:scope .font-preview {
+  display: grid;
+  gap: 1em;
+
+  p {
+    overflow-wrap: anywhere;
+  }
+}
+
+:scope .font-weights {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.8em;
+
+  div {
+    display: grid;
+    gap: 0.3em;
+  }
+
+  span {
+    font-size: 52px;
+  }
+}
+
+:scope .examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 34px;
+
+  article {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+    min-height: 52px;
+  }
+}
+
+:scope .palette {
+  display: flex;
+  gap: 1em;
+
+  div {
+    display: flex;
+    width: 8em;
+    height: 8em;
+    padding: 0.7em;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--black);
+    text-transform: uppercase;
+  }
+
+  small {
+    font-size: 0.6em;
+  }
+}
+
+:scope .yellow {
+  background: var(--yellow);
+}
+
+:scope .blue {
+  background: var(--blue);
+  color: var(--white);
+}
+
+:scope .black {
+  background: var(--black);
+  color: var(--white);
+}
+
+:scope .white {
+  background: var(--white);
+}

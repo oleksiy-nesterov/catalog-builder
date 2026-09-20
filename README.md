@@ -1,6 +1,6 @@
 # Catalog Builder
 
-Small TypeScript proof of concept for generating paginated publications as static web pages, a lightweight PDF and a print-oriented PDF through Vivliostyle. It can be used for product catalogs, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
+Catalog Builder uses HTML and CSS as the source format for PDF publications. The core idea is simple: HTML + CSS -> static HTML output, lightweight PDF and print-oriented PDF through Vivliostyle. It can be used for product catalogs, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
 
 ## Structure
 

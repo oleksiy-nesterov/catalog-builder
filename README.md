@@ -15,14 +15,14 @@ The `catalogs/default` catalog is an example catalog. It already includes a desi
 The `media/` folder contains preview pages from the demo catalog:
 
 <p>
-  <img src="media/1.jpg" height="180" alt="Demo catalog page 1">
-  <img src="media/2.jpg" height="180" alt="Demo catalog page 2">
-  <img src="media/3.jpg" height="180" alt="Demo catalog page 3">
-  <img src="media/4.jpg" height="180" alt="Demo catalog page 4">
-  <img src="media/5.jpg" height="180" alt="Demo catalog page 5">
-  <img src="media/6.jpg" height="180" alt="Demo catalog page 6">
-  <img src="media/7.jpg" height="180" alt="Demo catalog page 7">
-  <img src="media/8.jpg" height="180" alt="Demo catalog page 8">
+  <img src="media/1.jpg" height="150" alt="Demo catalog page 1">
+  <img src="media/2.jpg" height="150" alt="Demo catalog page 2">
+  <img src="media/3.jpg" height="150" alt="Demo catalog page 3">
+  <img src="media/4.jpg" height="150" alt="Demo catalog page 4">
+  <img src="media/5.jpg" height="150" alt="Demo catalog page 5">
+  <img src="media/6.jpg" height="150" alt="Demo catalog page 6">
+  <img src="media/7.jpg" height="150" alt="Demo catalog page 7">
+  <img src="media/8.jpg" height="150" alt="Demo catalog page 8">
 </p>
 
 See [media/catalog-web.pdf](media/catalog-web.pdf) for an example generated demo catalog PDF.

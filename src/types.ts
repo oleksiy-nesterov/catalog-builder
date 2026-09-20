@@ -21,10 +21,10 @@ export type PaperSize =
   | "Legal"
   | "Ledger";
 
-export type Catalog = {
+export type Publication = {
   title: string;
   language: string;
-  edition: string;
+  edition?: string;
   paperSize: PaperSize;
   pages: string[];
 };

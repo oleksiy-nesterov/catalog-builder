@@ -1,0 +1,7 @@
+body {
+  background: var(--white);
+}
+
+.page {
+  position: relative;
+}

@@ -1,0 +1,81 @@
+:scope {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+:scope .meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  max-width: 32em;
+  color: var(--blue);
+
+  div {
+    display: grid;
+    align-content: start;
+    gap: 0.6em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  small {
+    text-transform: uppercase;
+  }
+}
+
+:scope .spread-image {
+  position: absolute;
+  right: 0;
+  top: 18vh;
+  height: 55vh;
+  width: 25em;
+  z-index: 0;
+}
+
+:scope .caption {
+  position: absolute;
+  right: 26em;
+  top: 50vh;
+  text-align: right;
+
+  h1 {
+    font-size: 7.5em;
+  }
+
+  h2 {
+    color: var(--blue);
+    position: relative;
+
+    span {
+      color: var(--white);
+      position: absolute;
+      top: 0;
+      right: -4.5em;
+    }
+  }
+}
+
+:scope .story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  margin-top: auto;
+
+  article {
+    display: grid;
+    gap: 0.8em;
+  }
+
+  b {
+    color: var(--blue);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+

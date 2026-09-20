@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "fs-extra";
-import type { CatalogPaths } from "../paths";
+import type { PublicationPaths } from "../paths";
 import type { BuildTarget } from "../types";
 
 type AssetScope = "global" | "page" | "template";
@@ -16,7 +16,7 @@ export class AssetResolver {
   private replacements: { from: string; to: string }[] = [];
 
   constructor(
-    private readonly paths: CatalogPaths,
+    private readonly paths: PublicationPaths,
     private readonly target: BuildTarget,
     private readonly outputAssetPrefix: string
   ) {}

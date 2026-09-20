@@ -1,0 +1,108 @@
+:scope {
+  page: book;
+}
+
+:scope h2 {
+  color: var(--blue);
+  break-after: avoid;
+}
+
+:scope p {
+  orphans: 3;
+  widows: 3;
+}
+
+:scope .chapter {
+  break-inside: auto;
+
+  p {
+    text-align: justify;
+    hyphens: auto;
+    text-indent: 2em;
+    margin-top: 0;
+  }
+
+  p:first-child {
+    text-indent: 0;
+  }
+
+  p:first-child::first-letter {
+    float: left;
+    padding: 0.08em 0.12em 0 0;
+    color: var(--blue);
+    font-size: 4.4em;
+    font-weight: 800;
+    line-height: 0.82;
+  }
+}
+
+:scope header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  break-after: page;
+  page-break-after: always;
+  gap: 3em;
+  margin-bottom: 3em;
+
+  h1 {
+    string-set: book-title content(text);
+    max-width: 70%;
+    font-size: 4em;
+  }
+
+  .label {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .author {
+    string-set: book-author content(text);
+    color: var(--blue);
+    font-weight: 800;
+  }
+
+  .source {
+    max-width: 50%;
+  }
+}
+
+:scope .columns-2, :scope .columns-3 {
+  column-gap: 1em;
+}
+
+:scope .columns-2 {
+  column-count: 2;
+}
+
+:scope .columns-3 {
+  column-count: 3;
+}
+
+:scope h3 {
+  margin-bottom: 1em;
+}
+
+:scope .columns-2 h3, :scope .columns-3 h3 {
+  column-span: all;
+}
+
+:scope .wide-figure {
+  margin: 1em 0;
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+:scope section {
+  margin-top: 2em;
+}
+
+:scope section, :scope table {
+  break-inside: avoid;
+}

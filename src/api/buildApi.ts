@@ -2,8 +2,8 @@ import path from "node:path";
 import os from "node:os";
 import { spawn, spawnSync } from "node:child_process";
 import fs from "fs-extra";
-import { CatalogApi } from "./catalogApi";
-import { createCatalogPaths, distDir } from "../paths";
+import { PublicationApi } from "./publicationApi";
+import { createPublicationPaths, distDir } from "../paths";
 import { RenderApi } from "./renderApi";
 import type { AssetCopy } from "../resolvers/assetResolver";
 import type { BuildTarget, PaperSize } from "../types";
@@ -50,6 +50,12 @@ type VivliostyleConfig = {
 export class BuildApi {
   private static toPosix(filePath: string): string {
     return filePath.split(path.sep).join(path.posix.sep);
+  }
+
+  private static createPdfFileName(publicationName: string, title: string, edition?: string): string {
+    const parts = [publicationName, title, edition].filter(Boolean);
+
+    return `${parts.join("-")}.pdf`;
   }
 
   private static hasCommand(command: string): boolean {
@@ -201,18 +207,18 @@ export class BuildApi {
     return configPath;
   }
 
-  static async build(target: BuildTarget, catalogName = "default"): Promise<void> {
-    const paths = createCatalogPaths(catalogName);
-    const loaded = await CatalogApi.load(paths);
-    const catalogOutputRoot = path.join(distDir, catalogName);
+  static async build(target: BuildTarget, publicationName: string): Promise<void> {
+    const paths = createPublicationPaths(publicationName);
+    const loaded = await PublicationApi.load(paths);
+    const publicationOutputRoot = path.join(distDir, publicationName);
 
     if (target === "web") {
-      const outputDir = path.join(catalogOutputRoot, "web");
+      const outputDir = path.join(publicationOutputRoot, "web");
       await fs.emptyDir(outputDir);
-      const rendered = await RenderApi.renderCatalog(paths, loaded, target, "assets");
+      const rendered = await RenderApi.renderPublication(paths, loaded, target, "assets");
 
       for (const page of rendered.pages) {
-        const pageHtml = RenderApi.renderDocument(loaded.catalog.title, loaded.catalog.language, rendered.styles, [page]);
+        const pageHtml = RenderApi.renderDocument(loaded.publication.title, loaded.publication.language, rendered.styles, [page]);
         await BuildApi.writeHtml(path.join(outputDir, `${page.id}.html`), pageHtml);
       }
 
@@ -220,27 +226,27 @@ export class BuildApi {
       await BuildApi.copyGlobalAssets(paths.globalAssetsDir, outputDir);
       await BuildApi.copyFonts(paths.fontsDir, outputDir);
       await BuildApi.copyAssets(outputDir, rendered.assetCopies);
-      console.log(`Built web catalog: ${path.relative(process.cwd(), outputDir)}`);
+      console.log(`Built web publication: ${path.relative(process.cwd(), outputDir)}`);
       return;
     }
 
-    const outputDir = path.join(catalogOutputRoot, target);
-    const tempDir = path.join(catalogOutputRoot, ".tmp", target);
+    const outputDir = path.join(publicationOutputRoot, target);
+    const tempDir = path.join(publicationOutputRoot, ".tmp", target);
     await fs.emptyDir(outputDir);
     await fs.emptyDir(tempDir);
 
-    const rendered = await RenderApi.renderCatalog(paths, loaded, target, "assets");
-    const inputHtml = path.join(tempDir, "catalog.html");
+    const rendered = await RenderApi.renderPublication(paths, loaded, target, "assets");
+    const inputHtml = path.join(tempDir, "document.html");
     await BuildApi.writeHtml(inputHtml, rendered.documentHtml);
     await BuildApi.copyGlobalAssets(paths.globalAssetsDir, tempDir);
     await BuildApi.copyFonts(paths.fontsDir, tempDir);
     await BuildApi.copyAssets(tempDir, rendered.assetCopies);
 
-    const outputPdf = path.join(outputDir, target === "pdf" ? "catalog-web.pdf" : "catalog-print.pdf");
+    const outputPdf = path.join(outputDir, BuildApi.createPdfFileName(paths.name, loaded.publication.title, loaded.publication.edition));
     const enablePreflight = target === "print" && BuildApi.hasPressReadyTools();
     const configPath = await BuildApi.writeVivliostyleConfig(
-      loaded.catalog.title,
-      loaded.catalog.paperSize,
+      loaded.publication.title,
+      loaded.publication.paperSize,
       tempDir,
       inputHtml,
       outputPdf,
@@ -255,6 +261,6 @@ export class BuildApi {
 
     await BuildApi.runVivliostyle(inputHtml, outputPdf, enablePreflight, configPath);
     await BuildApi.cleanupDir(tempDir);
-    console.log(`Built ${target} catalog: ${path.relative(process.cwd(), outputPdf)}`);
+    console.log(`Built ${target} publication: ${path.relative(process.cwd(), outputPdf)}`);
   }
 }

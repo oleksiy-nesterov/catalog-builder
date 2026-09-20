@@ -1,94 +1,92 @@
-# Catalog Builder
+<p align="center">
+  <img width="360" src="media/logo.webp" alt="Publication Builder">
+</p>
 
-Catalog Builder uses HTML and CSS as the source format for PDF publications. The core idea is simple: HTML + CSS -> static HTML output, lightweight PDF and print-oriented PDF through [Vivliostyle](https://vivliostyle.org/). It can be used for product catalogs, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
+Publication Builder uses HTML and CSS as the source format for PDF publications. The core idea is simple: HTML + CSS -> static HTML output, lightweight PDF and print-oriented PDF through [Vivliostyle](https://vivliostyle.org/). It can be used for product publications, magazines, brochures, card sets, editorial reports and other print-friendly web documents.
 
 ## Structure
 
 - `src/` contains application code only.
-- `catalogs/` contains one folder per catalog. Each catalog folder is its own root for pages, templates, styles and assets.
+- `publications/` contains one folder per publication. Each publication folder is its own root for pages, templates, styles and assets.
 - `dist/` contains generated output only.
 
-The `catalogs/default` catalog is an example catalog. It already includes a design system, flexible templates and a working content structure, so it can be used as a foundation for custom catalogs. For catalog authoring, page layout conventions, design-system usage and content structure, see [GUID.md](GUID.md).
+The `publications/catalogue` publication is an example fixed-page catalogue. It already includes a design system, flexible templates and a working content structure, so it can be used as a foundation for custom publications. For fixed-page authoring, page layout conventions, design-system usage and content structure, see [CATALOG-GUID.md](CATALOG-GUID.md). For single-flow book-style publications that let Vivliostyle paginate long content automatically, see [BOOK-GUID.md](BOOK-GUID.md).
 
-## Demo Catalog
+## Demo Publication
 
-The `media/` folder contains preview pages from the demo catalog:
+The `media/` folder contains preview pages from the demo publication:
 
-<p>
-  <img src="media/1.jpg" height="150" alt="Demo catalog page 1">
-  <img src="media/2.jpg" height="150" alt="Demo catalog page 2">
-  <img src="media/3.jpg" height="150" alt="Demo catalog page 3">
-  <img src="media/4.jpg" height="150" alt="Demo catalog page 4">
-  <img src="media/5.jpg" height="150" alt="Demo catalog page 5">
-  <img src="media/6.jpg" height="150" alt="Demo catalog page 6">
-  <img src="media/7.jpg" height="150" alt="Demo catalog page 7">
-  <img src="media/8.jpg" height="150" alt="Demo catalog page 8">
+<p style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+  <img src="media/1.jpg" height="150" alt="Demo catalogue page 1" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/2.jpg" height="150" alt="Demo catalogue page 2" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/3.jpg" height="150" alt="Demo catalogue page 3" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/4.jpg" height="150" alt="Demo catalogue page 4" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/5.jpg" height="150" alt="Demo catalogue page 5" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/6.jpg" height="150" alt="Demo catalogue page 6" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/7.jpg" height="150" alt="Demo catalogue page 7" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/8.jpg" height="150" alt="Demo catalogue page 8" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/9.jpg" height="150" alt="Demo catalogue page 9" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
 </p>
 
-See [media/catalog-web.pdf](media/catalog-web.pdf) for an example generated demo catalog PDF.
+See [media/catalogue-Ukraine-2027.pdf](media/catalogue-Ukraine-2027.pdf) for an example generated demo publication PDF.
+
+<p style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+  <img src="media/1-1.jpg" height="150" alt="Demo book page 1" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/2-2.jpg" height="150" alt="Demo book page 2" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+  <img src="media/3-3.jpg" height="150" alt="Demo book page 3" style="box-shadow: 0 10px 28px rgb(0 0 0 / 20%);">
+</p>
+
+See [media/book-Ukraine-2027.pdf](media/book-Ukraine-2027.pdf) for an example generated demo publication PDF.
 
 ## Commands
 
 ```bash
 npm install
 npm run setup:print
-npm run build:web
-npm run build:pdf
-npm run build:print
-npm run build
-npm run build -- <your-catalog-folder>
-npm run build:web -- <your-catalog-folder>
-npm run dev
-npm run dev -- <your-catalog-folder>
+npm run build:web -- <your-publication-folder>
+npm run build:pdf -- <your-publication-folder>
+npm run build:print -- <your-publication-folder>
+npm run build -- <your-publication-folder>
+npm run dev -- <your-publication-folder>
 ```
 
 Output is written to:
 
-- `dist/<your-catalog-folder>/web/`
-- `dist/<your-catalog-folder>/pdf/catalog-web.pdf`
-- `dist/<your-catalog-folder>/print/catalog-print.pdf`
+- `dist/<your-publication-folder>/web/`
+- `dist/<your-publication-folder>/pdf/<publication>-<title>[-<edition>].pdf`
+- `dist/<your-publication-folder>/print/<publication>-<title>[-<edition>].pdf`
 
-By default, the project uses the catalog in the `default` folder. Pass another catalog folder name as the second CLI argument to build or preview it.
-
-## Page Format
-
-The current PDF page format is A4. If the catalog format changes, update all format-specific values together:
-
-- `catalogs/<your-catalog-folder>/catalog.json`: change `paperSize`.
-- `catalogs/<your-catalog-folder>/styles/pdf.css`: change `@page { size: A4; }`.
-- `catalogs/<your-catalog-folder>/styles/pdf.css`: change `.page { height: 297mm; }` to the physical height of the new page format.
-
-For example, A4 portrait uses `"paperSize": "A4"`, `size: A4` and `height: 297mm`. A different portrait format needs both the named page size and the matching physical height updated, otherwise PDF backgrounds and page-height layouts may not fill the page correctly.
+Publication names are required. For example, use `catalogue` for the fixed-page example or `book` for the long-flow example.
 
 ## Live Preview
 
-Run:
+Preview a specific publication:
 
 ```bash
-npm run dev
+npm run dev -- catalogue
 ```
 
 Then open:
 
-- `http://localhost:5173/default/` for the whole catalog
-- `http://localhost:5173/default/cover-front` for one page
-- `http://localhost:5173/<your-catalog-folder>/<page-name>` for another catalog or page
+- `http://localhost:5173/catalogue/` for the whole catalogue publication
+- `http://localhost:5173/catalogue/cover-front` for one page
+- `http://localhost:5173/<your-publication-folder>/<page-name>` for another publication or page
 
-The preview server renders from the current catalog files on each request and reloads the browser when files inside `catalogs/` change.
+The preview server renders from the current publication files on each request and reloads the browser when files inside `publications/` change.
 
-## Adding A Catalog Page
+## Adding A Publication Page
 
-Create a folder in `catalogs/default/pages/`, add `index.html`, then add the folder id to `catalogs/default/catalog.json`.
+Create a folder in `publications/catalogue/pages/`, add `index.html`, then add the folder id to `publications/catalogue/publication.json`.
 
 ```text
-catalogs/default/pages/product-page/
+publications/catalogue/pages/product-page/
 ├── index.html
 ├── data.json
 ├── description.md
 └── assets/
 ```
 
-The page index, page number and left/right side are computed from `catalog.json`; they are not stored in page files.
+The page index, page number and left/right side are computed from `publication.json`; they are not stored in page files.
 Templates can also read `page.target`, which is `web`, `pdf` or `print` for the current render.
 
 Page templates are normal [Nunjucks](https://mozilla.github.io/nunjucks/) files. Use `template()` to render a reusable template by folder name:
@@ -116,7 +114,7 @@ Use `:scope` when a local style must target the current page wrapper. For a page
 
 Selectors without `:scope` are left as written. This keeps local CSS predictable and makes cross-context rules explicit.
 
-Use an empty string in `catalog.json` for blank pages:
+Use an empty string in `publication.json` for blank pages:
 
 ```json
 {
@@ -128,7 +126,7 @@ Blank pages are rendered only in print PDF builds. Web pages and lightweight web
 
 ## Templates
 
-Templates live in `catalogs/default/templates/<template-name>/index.html`.
+Templates live in `publications/catalogue/templates/<template-name>/index.html`.
 
 Pages and templates work the same way: both can read local files, resolve local assets and define local CSS. Reusable fragments are rendered with:
 
@@ -185,7 +183,7 @@ Local page and template assets are resolved relative to the current page or temp
 {{ file('assets/chair-detail.jpg') }}
 ```
 
-Global assets are resolved from the current catalog root's `assets/` folder:
+Global assets are resolved from the current publication root's `assets/` folder:
 
 ```njk
 {{ global.asset('logo.svg') }}
@@ -195,7 +193,7 @@ Global assets are resolved from the current catalog root's `assets/` folder:
 
 Do not create separate web and print image folders. Keep browser-friendly JPG/PNG files beside optional TIFF siblings.
 
-For print builds, `chair.jpg` resolves to `chair.tiff` if it exists. Web and lightweight PDF builds keep the original JPG/PNG. The print build uses a temporary `dist/<your-catalog-folder>/.tmp/print/print-image-replacements.json` file with the discovered replacements, then removes `dist/<your-catalog-folder>/.tmp` after a successful build.
+For print builds, `chair.jpg` resolves to `chair.tiff` if it exists. Web and lightweight PDF builds keep the original JPG/PNG. The print build uses a temporary `dist/<your-publication-folder>/.tmp/print/print-image-replacements.json` file with the discovered replacements, then removes `dist/<your-publication-folder>/.tmp` after a successful build.
 
 PDF builds use a temporary target-specific Vivliostyle config. Lightweight web PDF builds do not enable CMYK post-processing. Print PDF builds enable `pdfPostprocess.cmyk`, so `device-cmyk()` colors are carried into print output.
 
@@ -208,7 +206,7 @@ PDF builds use a temporary target-specific Vivliostyle config. Lightweight web P
 - `ghostscript` provides `gs` for press-ready PDF/X post-processing and CMYK ink coverage checks.
 - `xpdf` or `poppler` provides `pdffonts`, which `press-ready` uses to inspect and outline fonts.
 
-Set `CATALOG_BUILDER_SKIP_PRINT_TOOLS=1` before `npm install` to skip system tool setup.
+Set `PUBLICATION_BUILDER_SKIP_PRINT_TOOLS=1` before `npm install` to skip system tool setup.
 
 On Windows, if no package manager is available, install the tools manually and make sure `gswin64c`/`gswin32c` and `pdffonts` are available in `PATH`, then run:
 
@@ -216,4 +214,4 @@ On Windows, if no package manager is available, install the tools manually and m
 npm run setup:print
 ```
 
-If Ghostscript (`gs`) and `pdffonts` are installed, the generated Vivliostyle config also enables `preflight: "press-ready-local"` for print-oriented PDF/X post-processing. Without those tools, the pilot still creates `dist/<your-catalog-folder>/print/catalog-print.pdf` and prints a console warning.
+If Ghostscript (`gs`) and `pdffonts` are installed, the generated Vivliostyle config also enables `preflight: "press-ready-local"` for print-oriented PDF/X post-processing. Without those tools, the pilot still creates the print PDF in `dist/<your-publication-folder>/print/` and prints a console warning.

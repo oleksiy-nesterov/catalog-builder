@@ -1,13 +1,13 @@
 {
-  "name": "catalog-builder",
+  "name": "publication-builder",
   "version": "0.1.0",
-  "description": "HTML and CSS catalog builder for static web output, lightweight PDFs and print-oriented PDFs.",
+  "description": "HTML and CSS publication builder for static web output, lightweight PDFs and print-oriented PDFs.",
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
   "packageManager": "npm@11.12.1",
   "keywords": [
-    "catalog",
+    "publication",
     "pdf",
     "print",
     "html",

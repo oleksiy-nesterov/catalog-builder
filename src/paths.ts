@@ -1,9 +1,9 @@
 import path from "node:path";
 
-export type CatalogPaths = {
+export type PublicationPaths = {
   name: string;
   rootDir: string;
-  catalogPath: string;
+  publicationPath: string;
   pagesDir: string;
   templatesDir: string;
   stylesDir: string;
@@ -13,20 +13,20 @@ export type CatalogPaths = {
 
 export const rootDir = process.cwd();
 export const srcDir = path.join(rootDir, "src");
-export const catalogsDir = path.join(rootDir, "catalogs");
+export const publicationsDir = path.join(rootDir, "publications");
 export const distDir = path.join(rootDir, "dist");
 
-export const createCatalogPaths = (catalogName: string): CatalogPaths => {
-  const catalogRoot = path.join(catalogsDir, catalogName);
+export const createPublicationPaths = (publicationName: string): PublicationPaths => {
+  const publicationRoot = path.join(publicationsDir, publicationName);
 
   return {
-    name: catalogName,
-    rootDir: catalogRoot,
-    catalogPath: path.join(catalogRoot, "catalog.json"),
-    pagesDir: path.join(catalogRoot, "pages"),
-    templatesDir: path.join(catalogRoot, "templates"),
-    stylesDir: path.join(catalogRoot, "styles"),
-    fontsDir: path.join(catalogRoot, "fonts"),
-    globalAssetsDir: path.join(catalogRoot, "assets")
+    name: publicationName,
+    rootDir: publicationRoot,
+    publicationPath: path.join(publicationRoot, "publication.json"),
+    pagesDir: path.join(publicationRoot, "pages"),
+    templatesDir: path.join(publicationRoot, "templates"),
+    stylesDir: path.join(publicationRoot, "styles"),
+    fontsDir: path.join(publicationRoot, "fonts"),
+    globalAssetsDir: path.join(publicationRoot, "assets")
   };
 };

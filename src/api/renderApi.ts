@@ -1,7 +1,7 @@
 import { AssetResolver, type AssetCopy } from "../resolvers/assetResolver";
-import type { LoadedCatalog } from "./catalogApi";
+import type { LoadedPublication } from "./publicationApi";
 import { CssResolver } from "../resolvers/cssResolver";
-import type { CatalogPaths } from "../paths";
+import type { PublicationPaths } from "../paths";
 import { TemplateApi } from "./templateApi";
 import type { BuildTarget, PageMeta } from "../types";
 
@@ -53,7 +53,7 @@ ${pages.map((page) => page.html).join("\n")}
 </html>`;
   }
 
-  static async renderCatalog(paths: CatalogPaths, loaded: LoadedCatalog, target: BuildTarget, assetPrefix: string): Promise<RenderResult> {
+  static async renderPublication(paths: PublicationPaths, loaded: LoadedPublication, target: BuildTarget, assetPrefix: string): Promise<RenderResult> {
     const assetResolver = new AssetResolver(paths, target, assetPrefix);
     const env = TemplateApi.createEnvironment(paths, assetResolver);
     const pageTemplatePaths = loaded.pages.flatMap((page) => page.templatePath ? [page.templatePath] : []);
@@ -82,7 +82,7 @@ ${pages.map((page) => page.html).join("\n")}
 
       const context = {
         target,
-        catalog: loaded.catalog,
+        publication: loaded.publication,
         page: pageMeta,
         global
       };
@@ -93,7 +93,7 @@ ${pages.map((page) => page.html).join("\n")}
     }
 
     const styles = await CssResolver.collectStyles(paths, templateClosure, target);
-    const documentHtml = RenderApi.renderDocument(loaded.catalog.title, loaded.catalog.language, styles, pages);
+    const documentHtml = RenderApi.renderDocument(loaded.publication.title, loaded.publication.language, styles, pages);
 
     return {
       pages,

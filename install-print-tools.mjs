@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import process from "node:process";
 
-const skipValue = process.env.CATALOG_BUILDER_SKIP_PRINT_TOOLS;
+const skipValue = process.env.PUBLICATION_BUILDER_SKIP_PRINT_TOOLS;
 const isWindows = process.platform === "win32";
 
 const hasCommand = (command) => {
@@ -62,7 +62,7 @@ const missingTools = () => {
 };
 
 if (skipValue === "1" || skipValue === "true") {
-  console.log("Skipping print tools setup because CATALOG_BUILDER_SKIP_PRINT_TOOLS is set.");
+  console.log("Skipping print tools setup because PUBLICATION_BUILDER_SKIP_PRINT_TOOLS is set.");
   process.exit(0);
 }
 

@@ -1,0 +1,23 @@
+{
+  "title": "Ukraine",
+  "language": "en",
+  "edition": "2027",
+  "paperSize": "A4",
+  "pages": [
+    "cover-front",
+    "cover-front-inside",
+    "ukraine",
+    "kyiv-left",
+    "kyiv-right",
+    "article",
+    {
+      "name": "regions",
+      "repeat": 5
+    },
+    "typography",
+    "tables",
+    "page",
+    "cover-back-inside",
+    "cover-back"
+  ]
+}

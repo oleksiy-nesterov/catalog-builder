@@ -1,0 +1,188 @@
+<header>
+  <p class="label">A single-flow Vivliostyle sample</p>
+  <h1>Ukraine: <span style="display: inline-block;">A History</span> Written in Crossroads</h1>
+  <p class="author">Publication Builder</p>
+  <p class="source">
+    A sample long-form chapter for testing automatic pagination, running headers,
+    page numbers, images, CSV tables and multi-column editorial sections.
+  </p>
+</header>
+
+<section class="chapter">
+  <p>
+    Ukrainian history has rarely moved in a straight line. It has unfolded across
+    river routes, borderlands, market towns, monasteries, ports and fields where
+    languages met and power changed hands. This geography made the country open
+    to trade and ideas, but it also placed Ukrainian communities in the path of
+    empires that tried to rename, divide or absorb them.
+  </p>
+  <p>
+    Kyiv stands near the beginning of that long story. As the center of Kyivan
+    Rus, it connected the Baltic and Black Sea worlds and helped shape the
+    political, religious and cultural memory of Eastern Europe. Later centuries
+    brought the Polish-Lithuanian Commonwealth, Cossack self-rule, imperial
+    pressure and repeated attempts to control Ukrainian language and public life.
+  </p>
+  <p>
+    Yet the thread did not disappear. It moved through folk songs, church books,
+    village schools, printing houses, city theaters and family archives. In the
+    nineteenth century, writers and historians turned memory into a modern civic
+    language. They argued that Ukraine was not only a landscape or a province,
+    but a community with its own voice and future.
+  </p>
+</section>
+
+<figure class="wide-figure">
+  <img src="{{ file('assets/kyiv.jpg') }}" alt="Kyiv">
+  <figcaption>Kyiv, used here as a page-flow image example.</figcaption>
+</figure>
+
+<section class="chapter columns-2">
+  <h3>From River Routes to Civic Language</h3>
+  <p>
+    The medieval polity known as Kyivan Rus grew around routes that linked the
+    Baltic to the Black Sea. Its cities were not isolated fortresses. They were
+    nodes in a network of trade, diplomacy, literacy and religious exchange.
+    Christianity, adopted in 988, added new architecture, chronicles, icons and
+    institutions to a political world that was already connected to Byzantium,
+    Scandinavia and the steppe.
+  </p>
+  <p>
+    After Mongol devastation and the fragmentation of old centers of power, the
+    lands of present-day Ukraine moved through different political formations.
+    Lithuanian, Polish, Crimean Tatar, Ottoman, Muscovite, Habsburg and local
+    Cossack forces all shaped the region in different ways. That mixture is one
+    reason Ukrainian history is best read as a layered map rather than a single
+    imperial timeline.
+  </p>
+  <p>
+    The Cossack era gave political language to autonomy, military organization
+    and local rights. The Hetmanate did not become a stable modern nation-state,
+    but its institutions and memory mattered deeply. Later writers, composers,
+    historians and teachers returned to those memories when imagining a modern
+    Ukrainian public.
+  </p>
+  <p>
+    Towns were just as important as battlefields. Brotherhood schools, workshops,
+    parish communities and printing houses gave local society practical ways to
+    preserve learning and argument. Books moved between monasteries, schools and
+    merchant households. Legal traditions, municipal privileges and religious
+    debate created a public culture that was not always sovereign, but was rarely
+    silent.
+  </p>
+  <p>
+    The Dnipro also remained more than a line on a map. It was a route, a border,
+    a memory device and a metaphor. Songs and chronicles made the river a way of
+    thinking about movement: north and south, village and city, steppe and forest,
+    danger and possibility. That geography helped Ukrainian culture absorb
+    outside influences without losing the habit of speaking from its own place.
+  </p>
+  <p>
+    The nineteenth century made language central. Printed books, schools,
+    ethnographic collections and theater helped make Ukrainian visible in public
+    life. Restrictions from imperial authorities could slow this work, but they
+    also showed how politically meaningful culture had become.
+  </p>
+  <p>
+    A modern civic vocabulary grew through patient, often local work. Scholars
+    collected folklore not as decoration, but as evidence of a living people.
+    Teachers carried grammar and history into classrooms. Theater made language
+    public and audible. Newspapers and almanacs connected readers who might never
+    meet, but who could begin to recognize themselves as part of the same
+    conversation.
+  </p>
+  <p>
+    This is why Ukrainian history can feel both interrupted and continuous. States
+    rose and disappeared; borders moved; institutions were suppressed or remade.
+    Yet language, memory, landscape and social practice kept forming bridges
+    between generations. The civic idea of Ukraine did not arrive all at once. It
+    accumulated through routes, books, schools, songs, city associations and the
+    stubborn labor of naming a common world.
+  </p>
+</section>
+
+<section>
+  <h3>Selected Historical Reference Points</h3>
+  <p>
+    This table is rendered from <code>history.csv</code> using the reusable
+    <code>table</code> template, so the same pattern can be used for generated
+    publication data.
+  </p>
+  {{ template('table', {
+    data: file.csv('history.csv')
+  }) }}
+</section>
+
+<section class="chapter columns-3">
+  <h3>Modern Ukraine in Three Lenses</h3>
+  <p>
+    The first lens is political. The twentieth century brought revolution,
+    short-lived independence, Soviet rule, famine, war and repression. In 1991,
+    independence became a legal fact; after that it became daily work. Elections,
+    civil society, local government, courts and public debate all became part of
+    the unfinished project of deciding how freedom should operate in ordinary
+    life.
+  </p>
+  <p>
+    Political life has often been noisy, imperfect and intensely participatory.
+    That matters. The habit of gathering in public, disputing authority, building
+    volunteer networks and demanding accountability has shaped modern Ukraine as
+    much as formal institutions have. Civic action did not replace the state, but
+    it repeatedly pushed the state to become more answerable to society.
+  </p>
+  <p>
+    The second lens is cultural. Ukrainian culture is not a museum shelf. It
+    appears in recovered archives, contemporary music, design, film, literature,
+    religious practice, cuisine and the everyday choice of language. The same
+    culture can be traditional and experimental, rural and urban, intimate and
+    global.
+  </p>
+  <p>
+    Culture also works through translation and reinvention. Older motifs return
+    in new forms: folk ornament in graphic design, archival songs in electronic
+    music, village memory in contemporary fiction, historic buildings in civic
+    restoration projects. These returns are not nostalgia alone. They are ways of
+    asking what can be carried forward and what must be changed.
+  </p>
+  <p>
+    The third lens is geographic. Ukraine sits between seas, plains, forests,
+    industrial cities and agricultural regions. Its landscapes explain both
+    vulnerability and resilience: ports and railways, grain fields and mines,
+    borderlands and capitals, village memory and metropolitan reinvention.
+  </p>
+  <p>
+    Regional difference is part of the country's grammar. Lviv, Kharkiv, Odesa,
+    Dnipro, Chernihiv, Chernivtsi, Donetsk, Uzhhorod and Kyiv do not tell the
+    same story in the same accent. Their histories carry different imperial
+    inheritances, industries, languages, universities and cultural habits. Modern
+    Ukraine becomes clearer when those differences are read as a network rather
+    than as a problem to flatten.
+  </p>
+  <p>
+    Reading Ukraine through these lenses does not simplify the story. It makes
+    the complexity legible. The country is neither only a frontier nor only a
+    victim of larger powers. It is a community with its own institutions, memory,
+    arguments, losses, inventions and future-facing imagination.
+  </p>
+  <p>
+    The same lenses show why ordinary infrastructure can become historically
+    meaningful. A railway station, a school, a restored theater, a public archive,
+    a village clinic or a local newspaper may look modest, but each one can hold
+    together a piece of civic life. Modern statehood is made from constitutions
+    and borders, but also from the repeated maintenance of such shared spaces.
+  </p>
+  <p>
+    That is why Ukraine's past feels so present. It is not kept behind glass.
+    It appears in city squares, family names, restored buildings, archives,
+    music, design and the stubborn habit of beginning again. The story is
+    difficult, but it is not only a story of loss. It is also a record of
+    continuity, imagination and the will to remain visible.
+  </p>
+  <p>
+    In that sense, modern Ukraine is best understood as a practice rather than a
+    finished monument. It is made by people who argue about memory, rebuild after
+    destruction, switch languages with purpose, preserve family photographs, open
+    small businesses, volunteer, teach, document crimes, publish books and insist
+    that local experience belongs inside European and global history.
+  </p>
+</section>

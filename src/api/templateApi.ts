@@ -3,7 +3,7 @@ import fs from "fs-extra";
 import nunjucks from "nunjucks";
 import { AssetResolver } from "../resolvers/assetResolver";
 import { FileApi, type FileHelper } from "./fileApi";
-import type { CatalogPaths } from "../paths";
+import type { PublicationPaths } from "../paths";
 
 const includePattern = /{%\s*include\s+["']([^"']+)["']/g;
 const templateCallPattern = /\btemplate\(\s*["']([^"']+)["']/g;
@@ -81,7 +81,7 @@ export class TemplateApi {
     return `<div class="${templateId}">${content}</div>`;
   }
 
-  private static async getTemplateIncludes(paths: CatalogPaths, templatePath: string): Promise<string[]> {
+  private static async getTemplateIncludes(paths: PublicationPaths, templatePath: string): Promise<string[]> {
     const source = await TemplateApi.resolve(paths, templatePath);
     const content = await fs.readFile(source.path, "utf8");
     const includes = [...content.matchAll(includePattern)].map((match) => match[1]);
@@ -90,7 +90,7 @@ export class TemplateApi {
     return [...new Set([...includes, ...templateCalls])];
   }
 
-  private static async visitTemplate(paths: CatalogPaths, templatePath: string, stack: string[], ordered: Map<string, TemplateSource>): Promise<void> {
+  private static async visitTemplate(paths: PublicationPaths, templatePath: string, stack: string[], ordered: Map<string, TemplateSource>): Promise<void> {
     if (stack.includes(templatePath)) {
       throw new Error(`Recursive template include detected: ${[...stack, templatePath].join(" -> ")}`);
     }
@@ -107,7 +107,7 @@ export class TemplateApi {
     }
   }
 
-  static createEnvironment(paths: CatalogPaths, assetResolver: AssetResolver): nunjucks.Environment {
+  static createEnvironment(paths: PublicationPaths, assetResolver: AssetResolver): nunjucks.Environment {
     const env = new nunjucks.Environment(new LocalFileLoader([paths.pagesDir, paths.templatesDir], { noCache: true }), {
       autoescape: false,
       throwOnUndefined: true
@@ -126,7 +126,7 @@ export class TemplateApi {
     return env;
   }
 
-  static resolveSync(paths: CatalogPaths, templatePath: string): TemplateSource {
+  static resolveSync(paths: PublicationPaths, templatePath: string): TemplateSource {
     const pageTemplatePath = path.join(paths.pagesDir, templatePath);
     const sharedTemplatePath = path.join(paths.templatesDir, templatePath);
 
@@ -141,7 +141,7 @@ export class TemplateApi {
     throw new Error(`Template "${templatePath}" does not exist`);
   }
 
-  static async resolve(paths: CatalogPaths, templatePath: string): Promise<TemplateSource> {
+  static async resolve(paths: PublicationPaths, templatePath: string): Promise<TemplateSource> {
     const pageTemplatePath = path.join(paths.pagesDir, templatePath);
     const sharedTemplatePath = path.join(paths.templatesDir, templatePath);
 
@@ -156,7 +156,7 @@ export class TemplateApi {
     throw new Error(`Template "${templatePath}" does not exist`);
   }
 
-  static resolveSyncByFilePath(paths: CatalogPaths, templateFilePath: string): TemplateSource {
+  static resolveSyncByFilePath(paths: PublicationPaths, templateFilePath: string): TemplateSource {
     const relativePagePath = path.relative(paths.pagesDir, templateFilePath);
     const isPageTemplate = relativePagePath !== "" && !relativePagePath.startsWith("..") && !path.isAbsolute(relativePagePath);
     const rootDir = isPageTemplate ? paths.pagesDir : paths.templatesDir;
@@ -173,7 +173,7 @@ export class TemplateApi {
     };
   }
 
-  static async collectTemplateClosure(paths: CatalogPaths, templatePaths: string[]): Promise<TemplateSource[]> {
+  static async collectTemplateClosure(paths: PublicationPaths, templatePaths: string[]): Promise<TemplateSource[]> {
     const ordered = new Map<string, TemplateSource>();
 
     for (const templatePath of templatePaths) {

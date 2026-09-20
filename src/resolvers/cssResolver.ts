@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "fs-extra";
-import type { CatalogPaths } from "../paths";
+import type { PublicationPaths } from "../paths";
 import type { BuildTarget } from "../types";
 import type { TemplateSource } from "../api/templateApi";
 
@@ -27,7 +27,7 @@ export class CssResolver {
     return undefined;
   }
 
-  static async collectStyles(paths: CatalogPaths, templates: TemplateSource[], target: BuildTarget): Promise<string> {
+  static async collectStyles(paths: PublicationPaths, templates: TemplateSource[], target: BuildTarget): Promise<string> {
     const targetStyle = target === "web" ? "web.css" : "pdf.css";
     const globalFiles = [...commonStyles.map((name) => path.join(paths.stylesDir, name)), path.join(paths.stylesDir, targetStyle)];
     const chunks: string[] = [];

@@ -1,0 +1,35 @@
+<section class="image-panel">
+  {{ template('spread-image', {
+    image: global.asset('kyiv.jpg'),
+    imageWidth: '70em'
+  }) }}
+</section>
+
+<section class="headline">
+  <h2>Above the Dnipro, the city keeps moving</h2>
+  <p>
+    Kyiv does not present itself all at once. It opens in layers: river light,
+    metro echoes, old courtyards, late coffee, public squares and sudden views
+    from the hills.
+  </p>
+</section>
+
+<section class="story">
+  <article>
+    <b>Memory in motion</b>
+    <p>
+      Its landmarks are not museum pieces. They sit beside daily routes, markets,
+      bookshops and apartment windows, making history feel close enough to touch.
+    </p>
+  </article>
+
+  <article>
+    <b>Capital energy</b>
+    <p>
+      The city works hard and talks fast. It plans, repairs, argues, creates and
+      keeps a rare confidence: the sense that tomorrow can still be designed.
+    </p>
+  </article>
+</section>
+
+{{ template('page-number', { offset: -1 }) }}
